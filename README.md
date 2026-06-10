@@ -10,7 +10,7 @@ from internal_tools import AudioPreprocessor, AudioModelExtractor
 
 from transformers import AutoModel
 import torch
-import sf
+import soundfile as sf
 
 # load a Wav2Vec2 model through the HuggingFace hub
 w2v2_model = AutoModel.from_pretrained('facebook/wav2vec2-base')
@@ -53,7 +53,7 @@ dl = get_annotated_audio_loader(
     my_audio_annotations, 
     # path to the directory with corresponding audio files
     my_audio_directory,
-    batch_size=50
+    batch_size=20
 )
 extr = AudioModelExtractor(spidr_model)
 
