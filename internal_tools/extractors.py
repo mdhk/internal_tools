@@ -2,7 +2,6 @@ import copy
 import torch
 import numpy as np
 import re
-import warnings
 from itertools import chain
 from collections.abc import Iterable
 from numpy.typing import ArrayLike
@@ -10,6 +9,7 @@ from numpy.typing import ArrayLike
 from internal_tools.internal_utils import SaveOutput
 from internal_tools.model_registry import (
     SUPPORTED_AUDIO_MODELS, 
+    name_list,
     library_list,
     load_default_extractor_config
 )
@@ -22,7 +22,7 @@ class AudioModelExtractor:
         component_transpose_dims: dict = {},
         component_transforms: dict = {}
     ):
-        assert type(model) in SUPPORTED_AUDIO_MODELS, "Provided model should be in this list: \n\n" +\
+        assert model.__class__.__name__ in name_list(SUPPORTED_AUDIO_MODELS), "Provided model should be in this list: \n\n" +\
             f"{library_list(SUPPORTED_AUDIO_MODELS)}\nInstead got: {type(model)}."
 
         self.model = model
@@ -134,7 +134,6 @@ class AudioModelExtractor:
                 is_batch = False
             
             for comp in comp_activations:
-
                 segment_frame_indices = self._get_frame_indices(
                     N_frames=comp_activations[comp].shape[1],
                     input_size=input_size,

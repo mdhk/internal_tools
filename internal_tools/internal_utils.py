@@ -1,3 +1,4 @@
+from torch.nn import LSTM
 from collections import defaultdict, namedtuple
 
 class SaveOutput:
@@ -6,7 +7,15 @@ class SaveOutput:
 
     def __call__(self, name):
         def hook(module, module_in, module_out):
-            self.outputs[name] = module_out.detach()
+            if type(module) == LSTM:
+                if module.num_layers > 1:
+                    for layer in range(module.num_layers):
+                        self.outputs[f"name_{layer+1}"] = module_out[1][0][layer].detach()
+                else:
+                    self.outputs[name] = module_out[1][0][-1].detach()
+                self.outputs[name] = module_out[0].detach()
+            else:
+                self.outputs[name] = module_out.detach()
             
         return hook
 
