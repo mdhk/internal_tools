@@ -1,3 +1,15 @@
+# tutorial data
+tutorials/data/*
+tutorials/embeddings/*
+tutorials/figures/*
+tutorials/models/*
+tutorials/results/*
+
+# job scripts
+tutorials/ABX.sh
+tutorials/probe_trained.sh
+tutorials/probe_untrained.sh
+
 # environment things
 it-gpu-env/*
 *.lock
