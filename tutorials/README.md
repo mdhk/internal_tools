@@ -1,6 +1,16 @@
 # `internal_tools` tutorials
 
-This directory contains some example scripts and notebooks which demonstrate the use of `internal_tools`. Running these tutorials requires some local files to be downloaded into this directory first, specifically into the `data/` and `models/` subdirectories:
+This directory contains some example scripts and notebooks which demonstrate the use of `internal_tools`. 
+
+## Colab notebooks
+The .ipynb notebooks in this repository can be run on Google Colab:
+
+0. [Sampling phone occurrences from LibriSpeech](https://colab.research.google.com/github/mdhk/internal_tools/blob/main/tutorials/0_sampling_librispeech_phones.ipynb)
+1. [Extracting model activations for annotated audio recordings](https://colab.research.google.com/github/mdhk/internal_tools/blob/main/tutorials/1_extracting_model_activations.ipynb)
+2. [Analyses of model-internal activations](https://colab.research.google.com/github/mdhk/internal_tools/blob/main/tutorials/2_activation_analyses.ipynb)
+
+## Tutorial files
+Running these tutorials requires some local files, specifically in the `data/` and `models/` subdirectories:
 ```
 .
 ├── data
