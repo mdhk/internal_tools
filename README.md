@@ -96,7 +96,7 @@ See the notebooks and scripts in the [`tutorials/`](https://github.com/mdhk/inte
 ## To use this repository
 1. Clone it locally:
    ```
-   git clone git@github.com:mdhk/internal_tools.git
+   git clone https://github.com/mdhk/internal_tools.git
    ```
 2. Initialize a [_uv_](https://docs.astral.sh/uv/) environment (first install `uv` if you haven't yet):
    ```
