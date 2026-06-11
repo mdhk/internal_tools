@@ -13,26 +13,30 @@ import torch
 import soundfile as sf
 
 # load a Wav2Vec2 model through the HuggingFace hub
-w2v2_model = AutoModel.from_pretrained('facebook/wav2vec2-base')
-w2v2_preprocessor = AudioPreprocessor.for_hf_model('facebook/wav2vec2-base')
+hf_id = 'facebook/wav2vec2-base'
+w2v2_model = AutoModel.from_pretrained(hf_id)
+w2v2_model.eval()
+w2v2_preprocessor = AudioPreprocessor.for_hf_model(hf_id)
 
 # load a SpidR model through torch.hub
 spidr_model = torch.hub.load("facebookresearch/spidr", "spidr_base")
+spidr_model.eval()
 spidr_preprocessor = AudioPreprocessor.for_spidr_model()
 
 # load audio file and extract SpidR activations for a specified time segment 
 audio, sr = sf.read("my_audio_file.wav")
 inputs = spidr_preprocessor(
-    example_audio,
+    audio,
     sampling_rate=sr,
     return_tensors="pt"
 ).input_values
 
-spidr_model.eval()
 extr = AudioModelExtractor(spidr_model)
+
 with torch.no_grad():
     outputs = spidr_model(inputs)
-all_activations = extr.get_activations(
+
+segment_activations = extr.get_activations(
     # segment start & end time in seconds
     between_times=[(0.2, 0.5)], 
     input_size=inputs.shape[-1]

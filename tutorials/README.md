@@ -13,7 +13,7 @@ The .ipynb notebooks in this repository can be run on Google Colab:
 Running these tutorials requires some local files, specifically in the `data/` and `models/` subdirectories:
 ```
 .
-├── data
+├── data/
 │   ├── analysis_files/
 │   │   ├── phone_ABX/
 │   │   │   [data needed for running ABX tests]
@@ -21,11 +21,11 @@ Running these tutorials requires some local files, specifically in the `data/` a
 │   │       [data needed for running probes]
 │   └── libri_phone_sample/
 |       [data needed for activation extraction & analysis]
-├── models
+├── models/
 |   [local checkpoints for a CPC and a MelHuBERT model]
-├── embeddings
+├── embeddings/
 |   [optional; pre-computed embeddings for example models]
-└── results
+└── results/
     [optional; pre-computed analysis results for example models]
 ```
 These files can be downloaded from [here](https://drive.google.com/drive/folders/1gngzccKa_87UEc5afiwS0XAF_ddXrUtU?usp=drive_link), or by using the `download_tutorial_files.sh` script:
